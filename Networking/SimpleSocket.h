@@ -20,9 +20,12 @@ namespace SL {
 
             virtual int establish_connection_network(int sock, struct sockaddr_in address) = 0;
             void test_connection(int);
+            //Getters
             struct sockaddr_in get_address();
             int get_sock();
             int get_connection(); 
+            //Setters
+            void set_connection(int val);
     };
 
 }

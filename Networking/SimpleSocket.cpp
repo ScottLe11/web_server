@@ -9,12 +9,11 @@ SL::SimpleSocket::SimpleSocket(int domain, int service, int protocol, int port, 
     address.sin_port = htons(port);
     address.sin_addr.s_addr = htonl(interface);
     
-    // connection established
+    // socket established
     sock = socket(domain, service, protocol);
     test_connection(sock);
 
-    connection = establish_connection_network(sock, address);
-    test_connection(connection);
+    
     
     // bind(connection, address, ) ;
 };
@@ -40,4 +39,8 @@ int SL::SimpleSocket::get_sock(){
 
 int SL::SimpleSocket::get_connection(){
     return connection;
+}
+
+void SL::SimpleSocket::set_connection(int val){
+    connection = val;
 }
