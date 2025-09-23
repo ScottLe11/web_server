@@ -13,7 +13,7 @@ namespace SL {
         private:
             struct sockaddr_in address;
             int sock;
-            int connection;
+            //int connection;
 
         public:
             SimpleSocket(int domain, int service, int protocol, int port, u_long interface);

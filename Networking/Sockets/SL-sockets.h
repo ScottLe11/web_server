@@ -1,5 +1,5 @@
-#ifndef SL-SOCKETS.H
-#define SL-SOCKETS.H
+#ifndef SL_SOCKETS_H
+#define SL_SOCKETS_H
 
 #include "SimpleSocket.h"
 

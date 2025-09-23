@@ -37,10 +37,10 @@ int SL::SimpleSocket::get_sock(){
     return sock;
 }
 
-int SL::SimpleSocket::get_connection(){
-    return connection;
-}
+// int SL::SimpleSocket::get_connection(){
+//     return connection;
+// }
 
-void SL::SimpleSocket::set_connection(int val){
-    connection = val;
-}
+// void SL::SimpleSocket::set_connection(int val){
+//     connection = val;
+// }
