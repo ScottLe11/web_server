@@ -1,5 +1,7 @@
 #include "TestServer.h"
 #include <cstring>
+#include <fstream>   
+#include <sstream>
 
 SL::TestServer::TestServer() : SimpleServer(AF_INET, SOCK_STREAM,
 0, 80, INADDR_ANY, 10){
@@ -23,7 +25,34 @@ void SL::TestServer::handler(){
 
 void SL::TestServer::responder(){
     char *hello = "Hello from Server!";
-    write(new_socket, hello, strlen(hello));
+    // std::string body = "<h1>Hello, this is me writing html stuff Signed Scott Le</h1>";
+    // std::string http_response = "HTTP/1.1 200 OK\r\n"
+    //     "Content-Type: text/html\r\n"
+    //     "Content-Length: " + std::to_string(body.length()) + "\r\n"
+    //     "\r\n" + 
+    //     body;
+    
+
+
+    //write(new_socket, http_response.c_str(), http_response.length());
+    std::string file_path = "index.html";
+    std::ifstream html_file(file_path);
+    std::string body;
+
+    if (html_file){
+        std::stringstream buffer;
+        buffer << html_file.rdbuf();
+        body = buffer.str();
+
+        std::string http_response =
+            "HTTP/1.1 200 OK\r\n"
+            "Content-Type: text/html\r\n"
+            "Content-Length: " + std::to_string(body.length()) + "\r\n"
+            "\r\n" +
+            body;
+        write(new_socket, http_response.c_str(), http_response.length());
+    }
+    
     close(new_socket);
 }
 
